@@ -1,0 +1,8 @@
+{
+  "newChallenge": "Novo Desafio",
+  "win": "Ganhe",
+  "failed": "Falhei",
+  "completed": "Completei",
+  "defaultMessage": "Acabe um ciclo e complete o desafio.",
+  "defaultSubMessage": "Suba de nível completando desafios."
+}
