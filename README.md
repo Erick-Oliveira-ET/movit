@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Movit
 
-## Getting Started
+A pomodoro app with support to personalized challenges.
+![Movit Homepage](./.github/homepage.png)
+![Movit Mobile Homepage](./.github/mobile.png)
 
-First, run the development server:
+## Build with
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Next
+- Styled-components
+- Typescript
+- Next-i18next
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Author
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Linkedin - [@erick-t-oliveira](https://www.linkedin.com/in/erick-t-oliveira/)
+- Github - [Erick_Tomaz_ET](https://github.com/Erick-Oliveira-ET)
+- Frontend Mentor - [@Erick-Oliveira-ET](https://www.frontendmentor.io/profile/Erick-Oliveira-ET)
+- Instagram - [@erick_tomaz_kz](https://www.instagram.com/erick_tomaz_kz/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## History
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This is a project developed in a really good brazilian coding camp named Next Level Week. I've been a part of 5 of them and learn something new in every one of them. But the NLW4 is an exception. Usually the projects aren't very useful for me, the developer but this one I started to use a lot.
 
-## Learn More
+The idea is simple: a simple pomodoro app that gives challenges to the user, specially programmers, move, stretch and take breaks to improve performance and avoid health problems. The first week using it I changed changing the challenges to make calisthenic exercises because I needed to exercise more because of quarantine and it made so much difference in all aspects. I guess my body saw me doing spaced and more heavy exercises during the day and I gain muscles quickly.
 
-To learn more about Next.js, take a look at the following resources:
+After that I remembered a conversation that I had with a friend and she told me that she wanted to stretch more (she's a dancer). So I made the worst decision and cloned the exact same project and changed the colors (she likes light mode in everything, even discord. It's crazy) and the challenges.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+A few days past this I realized the stupid decision I've made and started to improve the website. First I code refactored it because the timer logics didn't work when the tab was in sleep mode and so the countdown never did the job and also because the challenges were randomly selected and that's not good since the same challenge could appear multiple in a row. After that I changed all CSS code to styled-components because I wanted to learn the library and I never stopped using it. Made a theme changer because of my friend. And I made a way for people to add, remove and edit the challenges for anyone with different goals.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Nowadays I use it as a way to test new libraries and technics that I want to learn as multiple languages support and server side rendering.
