@@ -51,8 +51,16 @@ export function ChallengesProvider({
   const [challengesCompleted, setChallengesCompleted] = useState(
     rest.challengesCompleted ?? 0
   );
+
+  // StoppedIndex has to verify the amount of challenges because
+  // the user could previously have a large number of challenges
+  // and delete some and the stoppedIndex could be larger them
+  // the amount of available challenges
   const [stoppedIndex, setStoppedIndex] = useState(
-    rest.stoppedChallengeIndex ?? 0
+    rest.stoppedChallengeIndex &&
+      rest.challenges.length > rest.stoppedChallengeIndex
+      ? rest.stoppedChallengeIndex
+      : 0
   );
 
   const [activeChallenge, setActiveChallenge] = useState(null);
@@ -94,14 +102,8 @@ export function ChallengesProvider({
 
   function startNewChallenge() {
     let challenge;
-    if (localStorage.getItem("challenges") != undefined) {
-      challenge = JSON.parse(localStorage.getItem("challenges"));
-      challenge = challenge[stoppedIndex];
-      setStoppedIndex(stoppedIndex + 1);
-    } else {
-      challenge = challenges[stoppedIndex];
-      setStoppedIndex(stoppedIndex + 1);
-    }
+    challenge = challenges[stoppedIndex];
+    setStoppedIndex(stoppedIndex + 1);
 
     setActiveChallenge(challenge);
 
