@@ -58,6 +58,7 @@ export function ChallengesProvider({
   // the amount of available challenges
   const [stoppedIndex, setStoppedIndex] = useState(
     rest.stoppedChallengeIndex &&
+      rest.challenges &&
       rest.challenges.length > rest.stoppedChallengeIndex
       ? rest.stoppedChallengeIndex
       : 0
