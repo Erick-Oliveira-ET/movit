@@ -4,6 +4,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import defaultChallenges from "../../challenges.json";
 import LevelupModal from "../components/LevelupModal";
 
+import { event as GAEvent } from "../lib/ga";
 export interface Challenge {
   type: "body" | "eye";
   description: string;
@@ -22,7 +23,6 @@ interface ChallengeContextData {
   resetChallenge: () => void;
   completeChallenge: () => void;
   closeLevelupModal: () => void;
-  createChallenge: () => void;
   updateChallenges: (updatedChallenges: Challenge[]) => void;
 }
 
@@ -87,6 +87,12 @@ export function ChallengesProvider({
   }, [level, currentExperience, challengesCompleted, stoppedIndex]);
 
   function levelUp() {
+    GAEvent({
+      action: "level_up",
+      category: "level_up",
+      label: "Someone leveled up",
+      value: 1,
+    });
     setLevel(level + 1);
     setIsLevelUpModalOpen(true);
   }
@@ -95,13 +101,14 @@ export function ChallengesProvider({
     setIsLevelUpModalOpen(false);
   }
 
-  function createChallenge() {
-    const randomChallengeIndex = Math.floor(Math.random() * challenges.length);
-    const challenge = challenges[randomChallengeIndex];
-    setActiveChallenge(challenge);
-  }
-
   function startNewChallenge() {
+    GAEvent({
+      action: "new_challenge",
+      category: "challenge",
+      label: "New Challenge",
+      value: 1,
+    });
+
     let challenge;
     challenge = challenges[stoppedIndex];
     setStoppedIndex(stoppedIndex + 1);
@@ -125,6 +132,13 @@ export function ChallengesProvider({
     if (!activeChallenge) {
       return;
     }
+
+    GAEvent({
+      action: "challenge_completed",
+      category: "challenge",
+      label: "Challenge Completed",
+      value: 1,
+    });
 
     let finalExperience = currentExperience + activeChallenge.amount;
 
@@ -160,7 +174,6 @@ export function ChallengesProvider({
         resetChallenge,
         completeChallenge,
         closeLevelupModal,
-        createChallenge,
         updateChallenges,
       }}
     >

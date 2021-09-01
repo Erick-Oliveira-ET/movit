@@ -7,6 +7,8 @@ import {
 } from "react";
 import { ChallengesContext } from "./ChallengeContext";
 
+import { event as GAEvent } from "../lib/ga";
+
 interface CountdownContextData {
   isActive: boolean;
   minutes: number;
@@ -27,7 +29,7 @@ let countdownTimeout: NodeJS.Timeout;
 export function CountdownProvider({ children }: CountdownProviderProps) {
   const { startNewChallenge } = useContext(ChallengesContext);
 
-  const totalTime = 25 * 60;
+  const totalTime = 1;
   const [time, setTime] = useState(totalTime);
   const [finish, setFinish] = useState<number>();
   const [isActive, setIsActive] = useState(false);
@@ -37,6 +39,13 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
   const seconds = time % 60;
 
   function startCountdown() {
+    GAEvent({
+      action: "start_countdown",
+      category: "countdown",
+      label: "Start Countdown",
+      value: 1,
+    });
+
     setIsActive(true);
     setFinish(Date.now() + totalTime * 1000);
 
@@ -46,6 +55,13 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
   }
 
   function resetCountdown() {
+    GAEvent({
+      action: "reset_countdown",
+      category: "countdown",
+      label: "Reset Countdown",
+      value: 1,
+    });
+
     clearTimeout(countdownTimeout);
     setIsActive(false);
     setHasFinished(false);

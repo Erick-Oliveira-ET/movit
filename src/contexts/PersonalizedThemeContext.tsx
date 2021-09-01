@@ -2,6 +2,7 @@ import React, { createContext, ReactNode, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { darkTheme, lightTheme } from "../styles/Themes";
 import { ThemeProvider } from "styled-components";
+import { event as GAEvent } from "../lib/ga";
 
 interface PersonalizedThemeContextData {
   currentTheme: any;
@@ -27,6 +28,13 @@ export function PersonalizedThemeProvider({
   );
 
   function changeTheme() {
+    GAEvent({
+      action: "change_theme",
+      category: "theme",
+      label: "Theme changed",
+      value: currentTheme === 1 ? 2 : 1,
+    });
+
     setCurrentTheme(currentTheme === 1 ? 2 : 1);
   }
 
